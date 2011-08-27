@@ -1,1 +1,1 @@
-(defproject arohner-utils "0.0.1")
+(defproject arohner-utils "0.0.2")
