@@ -31,4 +31,3 @@ example:
   "same as validate, but always returns a boolean (rather than validation string on failure)"
   [validation-seq obj]
   (not (string? (validate validation-seq obj))))
-

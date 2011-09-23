@@ -98,3 +98,24 @@
   "true if metadata can be added to x"
   [x]
   (contains? (ancestors (class x)) clojure.lang.IObj))
+
+(defn update
+  "like update-in, but not nested"
+  [m k f & args]
+  (assoc m k (apply f (get m k) args)))
+
+(defn rename-key
+  "in a map, rename the key. overwrites new if it exists"
+  [m old new]
+  (-> m
+      (assoc new (get m old))
+      (dissoc old)))
+
+(defn apply-map
+  "Takes a fn and any number of arguments. Applies the arguments like
+  apply, except that the last argument is converted into keyword
+  pairs, for functions that keyword arguments."
+  [f & args*]
+  (let [normal-args (butlast args*)
+        m (last args*)]
+    (apply f (concat normal-args (flatten (seq m))))))
