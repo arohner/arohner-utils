@@ -119,3 +119,4 @@
   (let [normal-args (butlast args*)
         m (last args*)]
     (apply f (concat normal-args (flatten (seq m))))))
+
