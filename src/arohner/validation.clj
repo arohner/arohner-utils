@@ -20,12 +20,12 @@ example:
       true)))
 
 (defn validate!
-  "same as validate, but returns true or throws an exception containing the validation message on failure."
+  "same as validate, but returns the obj or throws an exception containing the validation message on failure."
   [validation-seq obj]
   (let [resp (validate validation-seq obj)]
     (if (string? resp)
       (throw (Exception. resp))
-      true)))
+      obj)))
 
 (defn valid?
   "same as validate, but always returns a boolean (rather than validation string on failure)"
